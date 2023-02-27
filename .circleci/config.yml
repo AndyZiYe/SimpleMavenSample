@@ -36,6 +36,30 @@ jobs:
           name: "Sleep2"
           command: "sleep 120"
 
+  job3:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: cimg/base:stable
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - run:
+          name: "Job3"
+          command: "echo job3"
+  
+  job4:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: cimg/base:stable
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - run:
+          name: "Job4"
+          command: "echo job4"
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -45,3 +69,15 @@ workflows:
       - job2-sleep:
           requires:
             - job1
+      - job3:
+          requires:
+            - job1
+      - job4:
+          requires:
+            - job2-sleep
+            - job3
+
+
+
+
+
