@@ -41,7 +41,7 @@ jobs:
 workflows:
   TEST-WORKFLOW:
     jobs:
-      - say-hello
-      - say-hello-sleep:
+      - job1
+      - job2-sleep:
           requires:
-            - say-hello
+            - job1
