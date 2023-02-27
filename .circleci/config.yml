@@ -42,4 +42,6 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-      - say-hello-sleep
+      - say-hello-sleep:
+          requires:
+            - say-hello
